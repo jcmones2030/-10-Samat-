@@ -4,7 +4,7 @@ Code Quality Assessment Worksheet
 Section: 9 - Samat // Score:____________
 
 C# / Name: #10 Mones, Jacques Vincent Dion C. //  Date: 8/16/26
-
+Group: #10 Mones, #11 Nicolas, #12 Paderna
 
 Instructions:
 The problem: Finding the highest (Maximum) number from a given list of numbers.
@@ -122,5 +122,3 @@ Based on your answers from 1 to 5, which one is the better algorithm that you wi
 The algorithm that our group would rather use is Pseudocode 1 because not only is the code simpler and efficient for even novice readers to use,
 its functions are much more easier to understand than Pseudocode 2 which uses nested loops that check whether or not the number being compared is larger than
 the previous number, causing a hassle in time management.
-
-_________________________________________________________________
