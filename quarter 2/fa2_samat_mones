@@ -1,0 +1,80 @@
+#Parent class
+class Patient:
+    def __init__(self, name: str, billamount: float):
+        self.name = name
+        self.billamount = billamount
+
+    def get_name(self) -> str:
+        return self.name
+    def set_name(self, name: str):
+        self.name = name
+    def get_billamount(self) -> float:
+        return self.billamount
+    def set_billamount(self, billamount: float):
+        if billamount >= 0:
+            self.billamount = billamount
+            
+        else:
+            self.billamount = "Invalid."
+            
+    def calculate_bill(self) -> float:
+        return self.billamount
+        
+    def __str__(self):
+        final_bill = self.billamount
+        return (f"Patient Name: {self.get_name()}\n"
+                f"Original Bill: ₱{self.get_billamount():,.2f}\n"
+                f"Final Bill: ₱{self.calculate():,.2f}")
+
+
+#Child class 1 of Parent Class 'Patient'
+class SeniorPatient(Patient):
+    def __init__(self, name: str, billamount: float):
+        super().__init__(name, billamount)
+
+    def calculate_bill(self) -> float:
+        originalbill = self.get_billamount()
+        return originalbill*0.80
+        
+    def __str__(self):
+        final_bill = self.billamount * 0.80
+        return (f"Patient Name: {self.get_name()}\n"
+                f"Original Bill: ₱{self.get_billamount():,.2f}\n"
+                f"Final Bill: ₱{self.calculate_bill():,.2f}")
+                
+#Child class 2 of Parent Class 'Patient'
+class PhilHealthPatient(Patient):
+    def __init__(self, name: str, billamount: float):
+        super().__init__(name, billamount)
+    
+    def calculate_bill(self) -> float:
+        originalbill = self.get_billamount()
+        return originalbill*0.85
+    
+    def __str__(self):
+        final_bill = self.billamount * 0.85
+        return (f"Patient Name: {self.get_name()}\n"
+                f"Original Bill: ₱{self.get_billamount():,.2f}\n"
+                f"Final Bill: ₱{self.calculate():,.2f}")
+                
+if __name__ == "__main__":
+    normal_patient = Patient("Juan Dela Cruz", 15000.0)
+    senior_patient = SeniorPatient("Maria Santos", 20000.0)
+    philhealth_patient = PhilHealthPatient("Antonio Luna", 18500.0)
+
+    print("HOSPITAL BILLING SYSTEM")
+    print("---------------------------")
+    print(f"Patient Name: {normal_patient.get_name()}")
+    print(f"Original Bill: ₱{normal_patient.get_billamount():,.2f}")
+    print(f"Final Bill: ₱{normal_patient.calculate_bill():,.2f}")
+    print("----------------------------")
+
+    print(f"Patient Name: {senior_patient.get_name()}")
+    print(f"Original Bill: ₱{senior_patient.get_billamount():,.2f}")
+    print(f"Final Bill: ₱{senior_patient.calculate_bill():,.2f}")
+    print("-----------------------------")
+
+    print(f"Patient Name: {philhealth_patient.get_name()}")
+    print(f"Original Bill: ₱{philhealth_patient.get_billamount():,.2f}")
+    print(f"Final Bill: ₱{philhealth_patient.calculate_bill():,.2f}")
+    print("-----------------------------")
