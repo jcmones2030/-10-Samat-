@@ -1,0 +1,38 @@
+from abc import ABC, abstractmethod
+
+#Parent class Sensor
+class Sensor(ABC):
+    def __init__(self, location):
+        self.location = location
+    @abstractmethod
+    def get_reading(self):
+        pass
+    
+#Child class 1 of parent class PHSensor
+class PHSensor(Sensor):
+    #Implement the get_reading() method in both so they print their specific type of data.
+    def get_reading(self):
+        print(f"[pH Sensor @ {self.location}] Reading: 7.2 pH (Neutral)")
+#Child class 2 of parent class TempSensor
+class TempSensor(Sensor):
+    #Implement the get_reading() method in both so they print their specific type of data.
+    def get_reading(self):
+        print(f"[Temperature Sensor @ {self.location}] Reading: 24.5°C")
+
+
+if __name__ == "__main__":
+    print("--- Lab Inventory System ---")
+    ph_device = PHSensor("Station A")
+    ph_device.get_reading()
+    temp_device = TempSensor("Station B")
+    temp_device.get_reading()
+    
+    print("----------------------------")
+    try:
+        print("\nAttempting to build a generic Sensor directly...")
+        my_sensor = Sensor("Station C")
+    except TypeError as error:
+        print("Safety check triggered successfully! Python says:")
+        print(f"-> {error}")
+        
+#The TypeError "Can't instantiate abstract class..." occurs because it forgets to put the get_reading method
