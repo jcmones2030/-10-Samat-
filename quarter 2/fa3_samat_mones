@@ -1,0 +1,28 @@
+from abc import ABC, abstractmethod
+
+#Parent class Sensor
+class Sensor(ABC):
+    #Use abstract method as the "lead programmer"
+    @abstractmethod
+    def get_reading(self):
+        pass
+print("--- Lab Inventory System ---")
+
+#Child class 1 of Sensor
+class PHSensor(ABC):
+    def get_reading(self):
+        return "[pH Sensor] Reading: 7.2 pH (Neutral)"
+
+#Child class 2 of Sensor
+class TempSensor(ABC):
+    def get_reading(self):
+        return "[Temperature Sensor] Reading: 24.5°C"
+
+my_sensor = PHSensor()
+sensor = TempSensor()
+print(my_sensor.get_reading())
+print(sensor.get_reading())
+
+print("----------------------------")
+
+#When putting my_sensor = Sensor(), the output shows a TypeError. It screams at you if you did it.
